@@ -1,0 +1,9 @@
+{
+  "xsappname": "fieldmobility",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of Airdit field Mobility Application",
+  "scopes": [],
+  "attributes": [],
+  "role-templates": []
+}
+ 

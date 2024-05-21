@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "project1",
+    "id": "alpfi",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:alp",
       "version": "1.13.4",
-      "toolsId": "bc1fd36a-1811-4ad8-a9fd-e783813d6c6d"
+      "toolsId": "d2a24d21-0397-4cfe-93ef-3b09854a32bd"
     },
     "dataSources": {
       "mainService": {
@@ -61,7 +61,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project1.i18n.i18n"
+          "bundleName": "alpfi.i18n.i18n"
         }
       },
       "": {
@@ -103,6 +103,49 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
+              "options": {
+                "settings": {
+                    "entitySet": "usrcnt",
+                    "controlConfiguration": {
+                        "@com.sap.vocabularies.UI.v1.LineItem": {
+                            "tableSettings": {
+                                "type": "ResponsiveTable",
+                                "selectionMode": "None"
+                            }
+                        },
+                        "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                            "layout": "CompactVisual",
+                            "initialLayout": "Visual",
+                            "filterFields": {
+                                "category1": {
+                                    "visualFilter": {
+                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlCategory1"
+                                    }
+                                },
+                                "category2": {
+                                    "visualFilter": {
+                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlCategory2"
+                                    }
+                                },
+                                "publishedAt": {
+                                    "visualFilter": {
+                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlPublishedAt"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "views": {
+                        "paths": [
+                            {
+                                "primary": [{"annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant"}],
+                                "secondary": [{"annotationPath": "com.sap.vocabularies.UI.v1.LineItem"}],
+                                "defaultPath": "both"
+                            }
+                        ]
+                    }
+                }
+            },
               "contextPath": "/usrcnt",
               "variantManagement": "Page",
               "navigation": {
@@ -116,7 +159,7 @@
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "AnalyticalTable",
-                    "selectionMode": "None"
+                    "selectionMode": "Multi"
                   }
                 }
               },

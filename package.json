@@ -2,28 +2,49 @@
   "name": "dash",
   "version": "1.0.0",
   "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap/cds": "^7",
-    "express": "^4",
+    "@sap/cds": "^7.0.0",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/xssec": "^3",
+    "express": "^4.0.0",
     "mongodb": "^6.6.2"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^1",
-    "@sap/eslint-plugin-cds": "^3",
+    "@cap-js/sqlite": "^1.0.0",
+    "@sap/cds-dk": "^7.9.2",
+    "@sap/eslint-plugin-cds": "^3.0.0",
     "@sap/ux-specification": "^1.120.10",
-    "eslint": "^9"
+    "eslint": "^9.0.0"
   },
   "scripts": {
     "start": "cds-serve",
     "watch-alp": "cds watch --open alp/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-alpfi": "cds watch --open alpfi/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": "*"
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      }
+    },
+    "odata": {
+      "version": "v4",
+      "v2proxy": {
+        "path": "/v2"
+      }
+    }
   },
   "sapux": [
     "app/alp",
-    "app/alp",
-    "app/project1"
+    "app/project1",
+    "app/project2",
+    "app/project3",
+    "app/alpfi"
   ]
 }
