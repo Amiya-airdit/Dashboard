@@ -20,8 +20,8 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-alp": "cds watch --open alp/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-alpfi": "cds watch --open alpfi/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-alpfi": "cds watch --open alpfi/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-alpfs": "cds watch --open alpfs/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {

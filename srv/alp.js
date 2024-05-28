@@ -98,12 +98,14 @@ module.exports = async (srv) => {
 
             const result = Object.keys(roleCounts).map(role => ({
                 adminType: role,
+                // adminTypeInactive: role,
                 activeCount: roleCounts[role].active,
                 inactiveCount: roleCounts[role].inactive,
-                totalActiveCount: roleCounts[role].active,
-                totalInactiveCount:roleCounts[role].inactive
+                // totalActiveCount: roleCounts[role].active,
+                // totalInactiveCount:roleCounts[role].inactive
             }));
-           result['$count'] = result.length
+           result['$count'] = result.length;
+           console.log(result);
             return result;
         } catch (error) {
             console.error('Error fetching user counts:', error);

@@ -1,9 +1,10 @@
 namespace mydash;
 
 service UsrdsbrdService {
-  @readonly entity usrcnt {
-    adminType     : String @title:'adminType';
-    activeCount   : Integer @title:'activeCount';
-    inactiveCount : Integer @title:'inactiveCount';
+  // @readonly
+  entity usrcnt {
+    adminType     : String  @title: 'Admin Type';
+    activeCount   : Integer @title: 'Active Count';
+    inactiveCount : Integer @title: 'Inactive Count';
   }
 }

@@ -1,0 +1,34 @@
+{
+    "@odata.context": "$metadata#usrcnt",
+    "@odata.count": 7,
+    "value": [
+        {
+            "adminType": "Super User",
+            "totalActiveCount": 2
+        },
+        {
+            "adminType": "Power User",
+            "totalActiveCount": 0
+        },
+        {
+            "adminType": "Quality User",
+            "totalActiveCount": 1
+        },
+        {
+            "adminType": "Corporate Quality User",
+            "totalActiveCount": 0
+        },
+        {
+            "adminType": "Business User",
+            "totalActiveCount": 0
+        },
+        {
+            "adminType": "Store User",
+            "totalActiveCount": 2
+        },
+        {
+            "adminType": "Field User",
+            "totalActiveCount": 3
+        }
+    ]
+}

@@ -1,0 +1,216 @@
+<mvc:View
+    controllerName="com.airdit.agpp.alp.alpfs.controller.MainPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    height="100%"
+>
+    <f:DynamicPage
+        id="dynamicPageId"
+        headerExpanded="{/headerExpanded}"
+        toggleHeaderOnTitleClick="{/titleClickable}"
+    >
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="Dashboard" />
+                </f:heading>
+                <f:actions>
+                    <Button
+                        icon="sap-icon://action"
+                        type="Transparent"
+                    />
+                    <Button
+                        text="Button with layoutData"
+                        type="Transparent"
+                        press="onPressOpenPopover"
+                    >
+                        <layoutData>
+                            <OverflowToolbarLayoutData
+                                priority="AlwaysOverflow"
+                                closeOverflowOnInteraction="false"
+                            />
+                        </layoutData>
+                    </Button>
+                </f:actions>
+                <f:navigationActions>
+                    <Button
+                        icon="sap-icon://full-screen"
+                        type="Transparent"
+                    />
+                    <Button
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                    />
+                </f:navigationActions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <layout:FixFlex
+                    id='chartFixFlex'
+                    minFlexSize="250"
+                >
+                    <layout:flexContent>
+                        <viz:VizFrame
+                            id="idVizFrame"
+                            uiConfig="{applicationSet:'fiori'}"
+                            vizType='bar'
+                            width="30%"
+                            height="100%"
+                            vizProperties="{title: { visible: true, text: 'Active Users' }, categoryAxis:{title:{visible: false}}, valueAxis:{title:{visible: false}}}"
+                        >
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{/usrcnt}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition
+                                            name="Admin Type"
+                                            value="{adminType}"
+                                        />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition
+                                            name="Active Count"
+                                            value="{activeCount}"
+                                        />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem
+                                    id='valueAxisFeed'
+                                    uid="valueAxis"
+                                    type="Measure"
+                                    values="Active Count"
+                                />
+                                <viz.feeds:FeedItem
+                                    uid="categoryAxis"
+                                    type="Dimension"
+                                    values="Admin Type"
+                                />
+                            </viz:feeds>
+                            <viz:dependents>
+                                <viz:Popover id="idPopOver" />
+                            </viz:dependents>
+                        </viz:VizFrame>
+                    </layout:flexContent>
+                </layout:FixFlex>
+                <layout:FixFlex
+                    id='chartFixFlexInactive'
+                    minFlexSize="250"
+                >
+                    <layout:flexContent>
+                        <viz:VizFrame
+                            id="idVizFrameInactive"
+                            uiConfig="{applicationSet:'fiori'}"
+                            vizType='bar'
+                            width="30%"
+                            height="100%"
+                            vizProperties="{title: { visible: true, text: 'Inactive Users' }, categoryAxis:{title:{visible: false}}, valueAxis:{title:{visible: false}}}"
+                        >
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{/usrcnt}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition
+                                            name="Admin Type"
+                                            value="{adminType}"
+                                        />
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition
+                                            name="Inactive Count"
+                                            value="{inactiveCount}"
+                                        />
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem
+                                    id='valueAxisFeedInactive'
+                                    uid="valueAxis"
+                                    type="Measure"
+                                    values="Inactive Count"
+                                />
+                                <viz.feeds:FeedItem
+                                    uid="categoryAxis"
+                                    type="Dimension"
+                                    values="Admin Type"
+                                />
+                            </viz:feeds>
+                            <viz:dependents>
+                                <viz:Popover id="idPopOverInactive" />
+                            </viz:dependents>
+                        </viz:VizFrame>
+                    </layout:flexContent>
+                </layout:FixFlex>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="idProductsTable"
+                sticky="HeaderToolbar,ColumnHeaders"
+                inset="false"
+                items="{/usrcnt}"
+                class="sapFDynamicPageAlignContent"
+                width="auto"
+            >
+                <headerToolbar>
+                    <Toolbar>
+                        <Title
+                            text="Users"
+                            level="H2"
+                        />
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://filter"
+                            press="onFilterPress"
+                            tooltip="Filter Data"
+                        />
+                        <Button
+                            icon="sap-icon://sort"
+                            press="onSortPress"
+                            tooltip="Sort Data"
+                        />
+                        <Button
+                            icon="sap-icon://group-2"
+                            press="onGroupPress"
+                            tooltip="Group Data"
+                        />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Admin Type" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Active Users" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="Inactive Users" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{adminType}" />
+                            <Text text="{activeCount}" />
+                            <Text text="{inactiveCount}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

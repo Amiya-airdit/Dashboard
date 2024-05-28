@@ -103,49 +103,6 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "options": {
-                "settings": {
-                    "entitySet": "usrcnt",
-                    "controlConfiguration": {
-                        "@com.sap.vocabularies.UI.v1.LineItem": {
-                            "tableSettings": {
-                                "type": "ResponsiveTable",
-                                "selectionMode": "None"
-                            }
-                        },
-                        "@com.sap.vocabularies.UI.v1.SelectionFields": {
-                            "layout": "CompactVisual",
-                            "initialLayout": "Visual",
-                            "filterFields": {
-                                "category1": {
-                                    "visualFilter": {
-                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlCategory1"
-                                    }
-                                },
-                                "category2": {
-                                    "visualFilter": {
-                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlCategory2"
-                                    }
-                                },
-                                "publishedAt": {
-                                    "visualFilter": {
-                                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlPublishedAt"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "views": {
-                        "paths": [
-                            {
-                                "primary": [{"annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant"}],
-                                "secondary": [{"annotationPath": "com.sap.vocabularies.UI.v1.LineItem"}],
-                                "defaultPath": "both"
-                            }
-                        ]
-                    }
-                }
-            },
               "contextPath": "/usrcnt",
               "variantManagement": "Page",
               "navigation": {
@@ -160,6 +117,22 @@
                   "tableSettings": {
                     "type": "AnalyticalTable",
                     "selectionMode": "Multi"
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "layout": "CompactVisual",
+                  "initialLayout": "Visual",
+                  "filterFields": {
+                    "adminType": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlAdminType"
+                      }
+                    },
+                    "adminTypeInactive": {
+                      "visualFilter": {
+                        "valueList": "com.sap.vocabularies.Common.v1.ValueList#vlAdminTypeInactive"
+                      }
+                    }
                   }
                 }
               },
